@@ -2,16 +2,16 @@ angular.module('demo', ['gm.typeaheadDropdown'])
 .controller('DemoCtrl', ['$scope', function($scope) {
 	$scope.options = [
 		{
-			name:"Mary"
+			text:"Mary", id:1
 		},
 		{
-			name:"Jane"
+			text:"Jane", id:2
 		},
 		{
-			name:"John"
+			text:"John", id:3
 		},
 		{
-			name:"Fred"
+			text:"Fred", id:4
 		}
 	];
 	

@@ -11,8 +11,10 @@ angular.module('gm.typeaheadDropdown', ['gm.typeaheadDropdown.tpl', 'ui.bootstra
 		replace:true,
 		controller: ['$scope', '$q', function($scope, $q) {
 			$scope.config = angular.extend({
-				modelLabel:"name",
-				optionLabel:"name"
+				modelLabel:"text",
+				optionLabel:"text",
+				editable:true,
+				required:false
 			}, $scope.config);
 			
 			$q.when($scope.getOptions())
@@ -21,6 +23,7 @@ angular.module('gm.typeaheadDropdown', ['gm.typeaheadDropdown.tpl', 'ui.bootstra
 			});
 			
 			$scope.onSelect = function($item, $model, $label) {
+				if (!$scope.model) $scope.model = {};
 				angular.extend($scope.model, $item);
 				$scope.model[$scope.config.modelLabel] = $item[$scope.config.optionLabel];
 			}
