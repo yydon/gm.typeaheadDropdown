@@ -17,13 +17,17 @@ angular.module('gm.typeaheadDropdown', ['gm.typeaheadDropdown.tpl', 'ui.bootstra
 				required:false
 			}, $scope.config);
 			
+			if (!$scope.model) {
+				$scope.model = {};
+				$scope.model[$scope.config.modelLabel] = "";
+			} 
+			
 			$q.when($scope.getOptions())
 			.then(function(options) {
 				$scope.options = options;
 			});
 			
 			$scope.onSelect = function($item, $model, $label) {
-				if (!$scope.model) $scope.model = {};
 				angular.extend($scope.model, $item);
 				$scope.model[$scope.config.modelLabel] = $item[$scope.config.optionLabel];
 			}
